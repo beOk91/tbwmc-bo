@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.devops.cj.member.mapper.MemberMapper">
+
+	<select id="selectMember" resultType="com.devops.cj.member.dto.MemberDto">
+		SELECT A.MEMBER_SEQ
+			  ,A.MEMBER_NAME
+			  ,A.EMAIL
+			  ,A.REGISTERED_DT
+			  ,A.PHONE_NUMBER
+			  ,(SELECT GROUP_CONCAT(LESSON_DAY) FROM LESSON WHERE MEMBER_SEQ = A.MEMBER_SEQ ) AS LESSON_DAY
+			  ,B.LESSON_START_DATE
+			  ,B.LESSON_END_DATE
+			  ,B.MONTH_OF_REGISTRATION
+		FROM MEMBER2 A LEFT JOIN LESSON B ON(A.MEMBER_SEQ = B.MEMBER_SEQ)
+		ORDER BY MEMBER_SEQ
+	</select>
+	
+	<insert id="insertMember" parameterType="com.devops.cj.member.dto.MemberDto">
+		INSERT INTO MEMBER2 (MEMBER_NAME,EMAIL,REGISTERED_DT,PHONE_NUMBER)
+		VALUES (#{memberName}, #{email}, NOW(), #{phoneNumber});
+	</insert>
+	
+	<update id="updateMember"  parameterType="com.devops.cj.member.dto.MemberDto">
+		UPDATE MEMBER2
+			SET MEMBER_NAME = #{memberName}
+			   ,EMAIL = #{email}
+			   ,PHONE_NUMBER = #{phoneNumber}
+			WHERE MEMBER_SEQ = #{memberSeq}
+	</update>
+
+</mapper>
