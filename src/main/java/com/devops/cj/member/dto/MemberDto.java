@@ -1,5 +1,7 @@
 package com.devops.cj.member.dto;
 
+import java.util.List;
+
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,9 +15,13 @@ public class MemberDto {
 	String registeredDt;
 	String phoneNumber;
 	
+	String lessonStartDate;
+	
+	List<LessonDto> dataSource;
+	
 	String lessonDay;
 	String lessonTime;
-	String lessonStartDate;
+
 	String lessonEndDate;
 	String monthOfRegistration;
 }

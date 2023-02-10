@@ -6,12 +6,11 @@ import lombok.Setter;
 
 @Data
 @Getter @Setter
-public class LessonDto {
-	String lessonSeq;
-	String lessonDay;
-	String lessonTime;
-	String lessonStartDate;
-	String monthOfRegistration;
+public class LessonDetailDto {
+	String lessonDetailSeq;
+	String lessonDate;
 	
+	String lessonYn;
+	String lessonSeq;
 	String memberSeq;
 }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.devops.cj.member.mapper.LessonDetailMapper">
+	<insert id="insertLessonDetail" parameterType="com.devops.cj.member.dto.LessonDetailDto">
+		INSERT INTO LESSON_DETAIL(LESSON_DATE,LESSON_SEQ)
+		VALUES(STR_TO_DATE(#{lessonDate}, '%Y%m%d%H%i%s'),#{lessonSeq})
+	</insert>
+	
+</mapper>

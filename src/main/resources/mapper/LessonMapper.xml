@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.devops.cj.member.mapper.MemberMapper">
+<mapper namespace="com.devops.cj.member.mapper.LessonMapper">
+	<select id="selectLessonSeq" resultType="Integer">
+		SELECT IFNULL(MAX(LESSON_SEQ),0)+1 FROM LESSON
+	</select>
 
+	<insert id="insertLesson" parameterType="com.devops.cj.member.dto.LessonDto">
+		INSERT INTO LESSON(LESSON_SEQ,LESSON_DAY,LESSON_TIME,LESSON_START_DATE,MONTH_OF_REGISTRATION,MEMBER_SEQ)
+		VALUES(#{lessonSeq},#{lessonDay},#{lessonTime},#{lessonStartDate},#{monthOfRegistration},#{memberSeq})
+	</insert>
 </mapper>
