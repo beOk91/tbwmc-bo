@@ -18,7 +18,7 @@ public class UserController {
 	private UserService userService;
 	
 	/**
-     * 새로운 게시물을 등록한다.
+     * 회원정보를 조회한다.
      * @param 
      * @return 
 	 * @throws Exception 
