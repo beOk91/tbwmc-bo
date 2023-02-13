@@ -24,12 +24,12 @@ import com.devops.cj.lesson.service.LessonService;
 @RestController
 @RequestMapping(value = "lesson")
 public class LessonController {
-	
+
 	private static final Log logger = LogFactory.getLog(LessonController.class);
-	
+
 	@Autowired
 	private LessonService lessonService;
-	
+
 	/**
 	 * 레슨 수강을 등록한다.
 	 * 
@@ -42,25 +42,24 @@ public class LessonController {
 		lessonService.insertLesson(lessonVO);
 		return ResponseEntity.ok("SUCCESS");
 	}
-	
+
 	@PostMapping(value = "/test")
 	public ResponseEntity<Object> test() throws Exception {
-		
+
 		LocalDate date = LocalDate.parse("2023-02-05", DateTimeFormatter.ISO_DATE);
 		DayOfWeek dayOfWeek = date.getDayOfWeek();
 		System.out.println(dayOfWeek);
-		
-        int dayOfWeekNumber = dayOfWeek.getValue();
-        System.out.println(dayOfWeekNumber);  // 7 일요일
-        
-        
-        dayOfWeek.getDisplayName(TextStyle.SHORT, Locale.US);
-		
+
+		int dayOfWeekNumber = dayOfWeek.getValue();
+		System.out.println(dayOfWeekNumber); // 7 일요일
+
+		dayOfWeek.getDisplayName(TextStyle.SHORT, Locale.US);
+
 		return ResponseEntity.ok("SUCCESS");
 	}
-	
+
 	/**
-	 * 등록된 수강정보를 조회한다.(캘린더의 상세 스케줄) 
+	 * 등록된 수강정보를 조회한다.(캘린더의 상세 스케줄)
 	 * 
 	 * @param
 	 * @return
@@ -69,9 +68,7 @@ public class LessonController {
 	@GetMapping(value = "/getDayScheduleList")
 	public List<LessonEntity> getDayScheduleList() throws Exception {
 		List<LessonEntity> getDayList = lessonService.getDayScheduleList();
-		
 		logger.info("List<LessonEntity> getDayList : " + getDayList.toString());
-		
 		return getDayList;
 	}
 }

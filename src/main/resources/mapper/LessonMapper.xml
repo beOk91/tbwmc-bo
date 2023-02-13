@@ -9,35 +9,4 @@
 		INSERT INTO LESSON(LESSON_SEQ,LESSON_DAY,LESSON_TIME,LESSON_START_DATE,MONTH_OF_REGISTRATION,MEMBER_SEQ)
 		VALUES(#{lessonSeq},#{lessonDay},#{lessonTime},#{lessonStartDate},#{monthOfRegistration},#{memberSeq})
 	</insert>
-	
-	<select id="insertLesson1" parameterType="com.devops.cj.lesson.model.LessonEntity">
-		INSERT
-			INTO CREW.LESSON(LESSON_SEQ, START_TIME, END_TIME,YOIL, CYCLE, START_DATE, REG_DATE, USER_SEQ)
-		VALUES (
-			#{lessonSeq},
-			#{startTime},
-			#{endTime},
-			#{yoil},
-			#{cycle},
-			#{startDate},
-			NOW(),
-			#{userSeq}
-		)
-	</select>
-
-	<select id="selectDayScheduleList" resultType="com.devops.cj.lesson.model.LessonEntity">
-		SELECT
-			LESSON_SEQ as lessonSeq,
-			START_TIME as startTime,
-			END_TIME as endTime,
-			YOIL as yoil,
-			cycle as cycle,
-			START_DATE as startDate,
-			USER_SEQ as userSeq,
-			(SELECT NAME FROM CREW.MEMBER WHERE USER_SEQ=4 limit 1) as name
-		FROM CREW.LESSON
-		ORDER BY START_DATE, START_TIME ASC
-	</select>
-
-	
 </mapper>
