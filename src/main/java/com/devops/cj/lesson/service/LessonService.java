@@ -11,10 +11,9 @@ import java.util.Map;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.namedparam.ParsedSql;
 import org.springframework.stereotype.Service;
 
-import com.devops.cj.lesson.dao.LessonMapper;
+import com.devops.cj.lesson.dao.LessonMapper1;
 import com.devops.cj.lesson.model.LessonEntity;
 import com.devops.cj.lesson.model.LessonVO;
 
@@ -24,7 +23,7 @@ public class LessonService {
 	private static final Log logger = LogFactory.getLog(LessonService.class);
 
 	@Autowired
-	private LessonMapper lessonMapper;
+	private LessonMapper1 lessonMapper1;
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void insertLesson(LessonVO lessonVO) throws Exception {
@@ -54,7 +53,7 @@ public class LessonService {
 					
 					lessonEntity.setStartDate(cycleDate.toString().replaceAll("-", ""));
 					logger.info("lessonEntity : " + lessonEntity.toString());
-					lessonMapper.insertLesson1(lessonEntity);
+					lessonMapper1.insertLesson1(lessonEntity);
 					
 					cycleDate = cycleDate.plusDays(7); // 시작일자+7 세팅
 					
@@ -96,7 +95,7 @@ public class LessonService {
 	}
 
 	public List<LessonEntity> getDayScheduleList() throws Exception {
-		List<LessonEntity> getDayList = lessonMapper.selectDayScheduleList();
+		List<LessonEntity> getDayList = lessonMapper1.selectDayScheduleList();
 		return getDayList;
 	}
 }

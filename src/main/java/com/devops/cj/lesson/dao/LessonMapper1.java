@@ -9,7 +9,7 @@ import com.devops.cj.lesson.model.LessonEntity;
 
 @Mapper
 @Repository
-public interface LessonMapper {
+public interface LessonMapper1 {
 	public void insertLesson1(LessonEntity lessonEntity) throws Exception;
 	public List<LessonEntity> selectDayScheduleList() throws Exception;
 }
