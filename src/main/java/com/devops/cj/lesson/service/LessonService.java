@@ -69,7 +69,8 @@ public class LessonService {
 					logger.info("lessonDetailEntity : " + lessonDetailEntity.toString());
 					lessonMapper1.insertLessonDetail1(lessonDetailEntity);
 					
-					// 1. lesson, lesson_datail 로직 변경
+					// 1. lesson, lesson_datail 로직 변경(O)
+					
 					// 2. holiday 적용(휴일 로직 재검토)
 					// 3. 일정 상세정보 수정하는 로직 추가
 					cycleDate = cycleDate.plusDays(7); // 시작일자+7 세팅
