@@ -21,7 +21,7 @@ public class HolidayFilter {
      * @param date
      */
     public static boolean isHoliday(long date) {
-        return isLegalHoliday(date) || isWeekend(date) || isAlternative(date);
+        return isLegalHoliday(date) || isAlternative(date);
     }
    
     /**
